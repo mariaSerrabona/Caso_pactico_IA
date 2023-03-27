@@ -1,0 +1,31 @@
+En este proyecto se ha querido enlazar varios tipos de interfaces diferentes para el desarrollo de un proyecto de
+Inteligencia Artificial.
+El bjetico principal de esta práctica será crear una red convolucional, capaz de reconocer imágenes
+y distinguirlas entre perros y gatos. Esto se conseguirá mediante el uso de librerias que ofrece el
+propio lenguaje de programción, emplearemos Pytorch en este caso. Además, proveeremos a la red
+con un amplio dataset con el que poder entrenar para poder obtener las mejores respuestas posibles.
+
+Una vez hallamos relizado  y entendido el código, encapsularemos la aplicación en un contenedor de docker (Dockerfile).
+En la odckerización, lo primero que haremos será instalar las dependencias y librerías para la creación del contenedor con
+la red neuronal en su interior. En este paso, me he encontrado con un error al instalas las dependencias que finalmente no he conseguido
+resulver. No onbstante, he seguido la realización de la práctica para poder solucionarlo más adelante.
+
+Lo siguinete que haremos será definir el directorio de trabajo para el contenedor, donde copiaremos los archivos que contienen el modelo.
+Una vez tenemos el directorio, ejecutaremos el modelo dentro del contenedor. Ahora, ejecutaremos este Docckerfile en la
+termianl para ver si se nos descarga la imagen con todas als dependencias.
+
+Ahora,  creamos el archivo docker-compose.yaml que almacenará el código necesario para vincular el contenedor con sus imágenes
+y volúmenes a una base de datos de mongoDB. Ejecutamso el código en la terminal y vemos que se ejecuta de forma correcta.
+
+Más tarde, lo que tendremos que hacer es cambiar la ejecuciión dde la predicción del modelo, de localhost al nombre de la base de
+datos de MongoDB que acabamos de crear (mogno).
+Ahora podemso crear una nueva configuración de ejecución como un dicker-compose. Añadimos el archivo docker-compose que haremoscreado en
+pasos anteriores. seleccionamos la flag para que nos construya los contenedores.
+Una vez, ejecutado, ya tendríamos la aplicación encapsulada en un contenedor.
+
+Ahora tendrmeos que añadir la base de datos al contendor. Para ello, añadimos una neuva base de datos de mmongoDB, seleccionamos
+el mismo puerto que en el docker compose y no pedimos autentificación. Ya tendríamos la base de datos creada y enlazada.
+
+Una vez hemos finalizado todos estos pasos, tendríamos una red convolucional, alamacenada en un docker, que lleva consigo una base de datos de la cual
+la red es capaz de aprender y ser entrenada.
+

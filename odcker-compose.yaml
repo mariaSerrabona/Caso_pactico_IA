@@ -1,0 +1,25 @@
+version: "3"
+service:
+  predict:
+    build:
+      context: .
+    volumes:
+      - ./predict_cat_dog/:/usr/src/predict/predict_cat_dog
+    networks:
+      -predict-public
+  mongo:
+    image: mongo:4.2.10
+    container_name: mongo
+    networks:
+      -predict-public
+    volumes:
+      -db
+    ports:
+      -27017:27017
+
+networks:
+  predict-public:
+    driver: bridge
+
+volumnes:
+  db:
